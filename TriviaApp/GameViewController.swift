@@ -57,27 +57,26 @@ class GameViewController: UIViewController {
             dismiss(animated: true, completion: nil)
         }else{
             logoImage.image = Downloader.downloadImageWithURL(url: (question?.data[gameNum].imgURL)!)
-          
-            upperLeftAnswer.setTitle(question?.data[gameNum].optionalAnswers[0], for: .normal)
-            upperRightAnswer.setTitle(question?.data[gameNum].optionalAnswers[1], for: .normal)
-            lowerLeftAnswer.setTitle(question?.data[gameNum].optionalAnswers[2], for: .normal)
-            lowerRightAnswer.setTitle(question?.data[gameNum].optionalAnswers[3], for: .normal)
+            gameNum += 1
+
+            upperLeftAnswer.setTitle(question?.data[gameNum-1].optionalAnswers[0], for: .normal)
+            upperRightAnswer.setTitle(question?.data[gameNum-1].optionalAnswers[1], for: .normal)
+            lowerLeftAnswer.setTitle(question?.data[gameNum-1].optionalAnswers[2], for: .normal)
+            lowerRightAnswer.setTitle(question?.data[gameNum-1].optionalAnswers[3], for: .normal)
 
 
         }
     }
     @IBAction func upperLeftClicked(_ sender: Any) {
-        if(upperLeftAnswer.currentTitle == question?.data[gameNum].rightAnswer){
+        if(upperLeftAnswer.currentTitle == question?.data[gameNum-1].rightAnswer){
             score += 1
-            gameNum += 1
             self.progressBar.setProgress(Float(Float(gameNum) / Float(MAX_ROUNDS)), animated: true)
-            gameNumber.text = String(gameNum)
+            gameNumber.text = String(gameNum+1)
             startRound()
         }else{
             mistakes += 1
-            gameNum += 1
             self.progressBar.setProgress(Float(Float(gameNum) / Float(MAX_ROUNDS)), animated: true)
-            gameNumber.text = String(gameNum)
+            gameNumber.text = String(gameNum+1)
             if(mistakes == 1){
                 rightHeart.isHidden = true
             }else if(mistakes == 2){
@@ -89,17 +88,15 @@ class GameViewController: UIViewController {
         }
     }
     @IBAction func lowerLeftClicked(_ sender: Any) {
-        if(lowerLeftAnswer.currentTitle == question?.data[gameNum].rightAnswer){
+        if(lowerLeftAnswer.currentTitle == question?.data[gameNum-1].rightAnswer){
             score += 1
-            gameNum += 1
             self.progressBar.setProgress(Float(Float(gameNum) / Float(MAX_ROUNDS)), animated: true)
-            gameNumber.text = String(gameNum)
+            gameNumber.text = String(gameNum+1)
             startRound()
         }else{
             mistakes += 1
-            gameNum += 1
             self.progressBar.setProgress(Float(Float(gameNum) / Float(MAX_ROUNDS)), animated: true)
-            gameNumber.text = String(gameNum)
+            gameNumber.text = String(gameNum+1)
             if(mistakes == 1){
                 rightHeart.isHidden = true
             }else if(mistakes == 2){
@@ -111,17 +108,15 @@ class GameViewController: UIViewController {
         }
     }
     @IBAction func upperRightClicked(_ sender: Any) {
-        if(upperRightAnswer.currentTitle == question?.data[gameNum].rightAnswer){
+        if(upperRightAnswer.currentTitle == question?.data[gameNum-1].rightAnswer){
             score += 1
-            gameNum += 1
             self.progressBar.setProgress(Float(Float(gameNum) / Float(MAX_ROUNDS)), animated: true)
-            gameNumber.text = String(gameNum)
+            gameNumber.text = String(gameNum+1)
             startRound()
         }else{
             mistakes += 1
-            gameNum += 1
             self.progressBar.setProgress(Float(Float(gameNum) / Float(MAX_ROUNDS)), animated: true)
-            gameNumber.text = String(gameNum)
+            gameNumber.text = String(gameNum+1)
             if(mistakes == 1){
                 rightHeart.isHidden = true
             }else if(mistakes == 2){
@@ -134,17 +129,15 @@ class GameViewController: UIViewController {
     
     }
     @IBAction func lowerRightClicked(_ sender: Any) {
-        if(lowerRightAnswer.currentTitle == question?.data[gameNum].rightAnswer){
+        if(lowerRightAnswer.currentTitle == question?.data[gameNum-1].rightAnswer){
             score += 1
-            gameNum += 1
             self.progressBar.setProgress(Float(Float(gameNum) / Float(MAX_ROUNDS)), animated: true)
-            gameNumber.text = String(gameNum)
+            gameNumber.text = String(gameNum+1)
             startRound()
         }else{
             mistakes += 1
-            gameNum += 1
             self.progressBar.setProgress(Float(Float(gameNum) / Float(MAX_ROUNDS)), animated: true)
-            gameNumber.text = String(gameNum)
+            gameNumber.text = String(gameNum+1)
             if(mistakes == 1){
                 rightHeart.isHidden = true
             }else if(mistakes == 2){
